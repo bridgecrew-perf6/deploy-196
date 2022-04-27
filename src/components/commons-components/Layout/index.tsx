@@ -42,14 +42,14 @@ export default function LayOutDesign(props: IPropsDesign) {
 
   const [openNavi, setOpenNavi] = useState(false);
 
-  // console.log(router.pathname);
+  console.log(isHiddenmain);
 
   return (
     <div>
       {!isHiddenHeader && (
         <div>
           <LayOutDesignNavi openNavi={openNavi} />
-          {!isHiddenmain ? (
+          {isHiddenmain ? (
             <LayOutDesignHead openNavi={openNavi} setOpenNavi={setOpenNavi} />
           ) : (
             <LayOutDesignMainHead
