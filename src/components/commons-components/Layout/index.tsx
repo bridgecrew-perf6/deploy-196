@@ -17,21 +17,21 @@ const LayOutDesignBody = styled.div`
 `;
 
 const HIDDEN_HEADERS = ["/"];
-const HIDDEN_MAIN = ["/mainpage"];
-const HIDDEN_SUBBANNER = ["/boards", "/market"];
+const HIDDEN_MAIN = ["/mainpage/"];
+const HIDDEN_SUBBANNER = ["/boards/", "/market/"];
 const HIDDEN_SEARCH = "/search/";
 
 export default function LayOutDesign(props: IPropsDesign) {
   const router = useRouter();
 
   const HIDDEN_BANNERS = [
-    "/Login",
-    "/Login/join",
-    "/mypage",
-    "/boards",
-    `/boards/${router.query.board_Id}`,
-    "/market",
-    `/market/${router.query.ItemId}`,
+    "/Login/",
+    "/Login/join/",
+    "/mypage/",
+    "/boards/",
+    `/boards/${router.query.board_Id}/`,
+    "/market/",
+    `/market/${router.query.ItemId}/`,
   ];
 
   const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
@@ -42,14 +42,14 @@ export default function LayOutDesign(props: IPropsDesign) {
 
   const [openNavi, setOpenNavi] = useState(false);
 
-  console.log(isHiddenmain);
+  // console.log(isHiddenmain);
 
   return (
     <div>
       {!isHiddenHeader && (
         <div>
           <LayOutDesignNavi openNavi={openNavi} />
-          {isHiddenmain ? (
+          {!isHiddenmain ? (
             <LayOutDesignHead openNavi={openNavi} setOpenNavi={setOpenNavi} />
           ) : (
             <LayOutDesignMainHead
