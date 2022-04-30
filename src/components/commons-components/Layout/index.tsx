@@ -32,6 +32,7 @@ export default function LayOutDesign(props: IPropsDesign) {
     "/boards/new/",
     `/boards/${router.query.board_Id}/`,
     "/market/",
+    "/market/new/",
     `/market/${router.query.ItemId}/`,
   ];
 
