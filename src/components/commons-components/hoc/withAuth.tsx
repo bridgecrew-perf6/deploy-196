@@ -6,7 +6,7 @@ import { getAccessToken } from "../../../commons/libraries/getAccessToken";
 
 export const withAuth =
   (Component: ComponentType) =>
-  <P extends {}>(props: P) => {
+  <P extends `Record<string, unknown>`>(props: P) => {
     const router = useRouter();
     const { accessToken } = useContext(MakeGlobalContext);
 

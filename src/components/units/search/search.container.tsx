@@ -15,7 +15,6 @@ export default function RouterSearchPage() {
   console.log(router.query);
 
   const { moveToPage } = MoveToPageHook();
-  //test
 
   const { data } = useQuery(FETCH_BOARDS, {
     variables: {

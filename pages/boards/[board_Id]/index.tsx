@@ -3,8 +3,17 @@ import FreeBoardComments from "../../../src/components/units/boards/comments/Boa
 import EditBoardCommentList from "../../../src/components/units/boards/EditComments/EditDeleteComment.container";
 import Head from "next/head";
 import { request, gql } from "graphql-request";
+import { GetServerSideProps } from "next";
 
-export default function BoardDetailPage(props) {
+interface IPropsBoard {
+  data: {
+    title: string;
+    contents: string;
+    images: string[];
+  };
+}
+
+export default function BoardDetailPage(props: IPropsBoard) {
   console.log(props.data);
   return (
     <div>
@@ -15,7 +24,7 @@ export default function BoardDetailPage(props) {
           property="og:image"
           content={
             props.data.images.length
-              ? props.data.images[0]
+              ? `https://storage.googleapis.com/${props.data.images[0]}`
               : "https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E"
           }
         />
@@ -40,7 +49,7 @@ const FETCH_BOARD = gql`
   }
 `;
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const result = await request(
     "https://backend05.codebootcamp.co.kr/graphql03",
     FETCH_BOARD,
