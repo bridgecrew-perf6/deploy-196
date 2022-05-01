@@ -5,12 +5,20 @@ import Head from "next/head";
 import { request, gql } from "graphql-request";
 
 export default function BoardDetailPage(props) {
+  console.log(props.data);
   return (
     <div>
       <Head>
         <meta property="og:title" content={props.data.title} />
         <meta property="og:description" content={props.data.contents} />
-        <meta property="og:image" content={props.data.images[0]} />
+        <meta
+          property="og:image"
+          content={
+            props.data.images.length
+              ? props.data.images[0]
+              : "https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E"
+          }
+        />
       </Head>
       <div>
         <FreeBoardDetail />
