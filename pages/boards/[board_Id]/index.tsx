@@ -4,16 +4,13 @@ import EditBoardCommentList from "../../../src/components/units/boards/EditComme
 import Head from "next/head";
 import { request, gql } from "graphql-request";
 
-export default function BoardDetailPage() {
+export default function BoardDetailPage(props) {
   return (
     <div>
       <Head>
-        <meta property="og:title" content="제목 테스트입니다." />
-        <meta property="og:description" content="자유게시판입니다." />
-        <meta
-          property="og:image"
-          content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU"
-        />
+        <meta property="og:title" content={props.data.title} />
+        <meta property="og:description" content={props.data.contents} />
+        <meta property="og:image" content={props.data.images[0]} />
       </Head>
       <div>
         <FreeBoardDetail />
